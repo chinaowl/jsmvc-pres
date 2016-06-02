@@ -18,7 +18,7 @@ ngTodo.controller('NgTodoCtrl', function NgTodoCtrl($scope) {
     }
   ];
 
-  $scope.addNewTask = function() {
+  $scope.addNewTask = function () {
     $scope.todos.unshift({
       val: $scope.newTask,
       completed: false
@@ -26,13 +26,13 @@ ngTodo.controller('NgTodoCtrl', function NgTodoCtrl($scope) {
 
     $scope.newTask = '';
   };
-  
-  $scope.removeTask = function(index) {
+
+  $scope.removeTask = function (index) {
     $scope.todos.splice(index, 1);
   };
 
-  $scope.clearCompleted = function() {
-    $scope.todos = $scope.todos.filter(function(todo) {
+  $scope.clearCompleted = function () {
+    $scope.todos = $scope.todos.filter(function (todo) {
       return !todo.completed;
     });
   };
