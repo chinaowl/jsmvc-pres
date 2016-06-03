@@ -1,3 +1,7 @@
 Todos.TodoEntryComponent = Ember.Component.extend({
-  actions: {}
+  actions: {
+    click: function () {
+      this.sendAction('remove');
+    }
+  }
 });
