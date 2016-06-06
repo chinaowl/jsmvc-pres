@@ -1,4 +1,26 @@
 window.TodoView = Backbone.View.extend({
+  initialize: function () {
+    this.model.on('change', this.render, this);
+  },
+
+  events: {
+    'change input[type=checkbox]' : 'toggle',
+    'change .form-control': 'update',
+    'click .btn-danger': 'remove'
+  },
+
+  toggle: function () {
+    this.model.toggle();
+  },
+
+  update: function () {
+    this.model.updateText(this.$('.form-control').val());
+  },
+
+  remove: function () {
+    this.model.destroy();
+  },
+
   template: _.template('<span class="input-group-addon"><input <%= completed ? "checked=checked" : "" %> type="checkbox"></span><input value="<%= val %>" class="form-control<%= completed ? " finished" : "" %>" type="text"><span class="input-group-btn"><button class="btn btn-danger" type="button"><i class="glyphicon glyphicon-remove"></i></button></span>'),
 
   render: function () {
@@ -29,5 +51,10 @@ window.TodosView = Backbone.View.extend({
   render: function () {
     this.addAll();
     return this;
+  },
+
+  filterCompleted: function () {
+    this.collection.filterCompleted();
+    this.render();
   }
 });

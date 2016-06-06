@@ -5,6 +5,15 @@ window.TodoApp = new (Backbone.Router.extend({
     this.todoItems = new TodoItems();
     this.todosView = new TodosView({collection: this.todoItems});
     this.todosView.render();
+
+    $('.btn-clear').click(function (e) {
+      window.TodoApp.todosView.filterCompleted();
+    });
+
+    $('.btn-success').click(function (e) {
+      window.TodoApp.todoItems.add({val: $('#newTodo').val(), completed: false});
+      $('#newTodo').val('');
+    });
   },
 
   index: function () {
