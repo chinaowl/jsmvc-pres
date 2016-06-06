@@ -23,4 +23,4 @@ window.TodoApp = new (Backbone.Router.extend({
   start: function () {
     Backbone.history.start();
   }
-}))();
+}));

@@ -23,7 +23,7 @@ window.TodosView = Backbone.View.extend({
 
   addAll: function () {
     this.$el.empty();
-    this.collecton.forEach(this.addOne, this);
+    this.collection.forEach(this.addOne, this);
   },
 
   render: function () {
